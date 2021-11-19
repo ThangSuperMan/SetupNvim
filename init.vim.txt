@@ -1,0 +1,49 @@
+call plug#begin()
+
+" Auto pairs
+Plug 'jiangmiao/auto-pairs'
+let g:AutoPairsShortcutJump = '<M-n>'
+
+" Coc 
+Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
+let g:coc_global_extensions = ['coc-tsserver', 'coc-json']
+
+" Nerd Tree
+Plug 'preservim/nerdtree'
+nnoremap <C-t> :NERDTreeToggle<CR>
+
+" Airline
+Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline'
+let g:airline_theme='base16'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+let g:airline#extensions#tabline#buffer_nr_show = 1
+
+call plug#end()
+
+set number
+autocmd BufEnter * :set scroll=10
+
+" Auto have number of lines in ide
+autocmd VimEnter * set number
+
+" Syntax theme "{{{
+" ---------------------------------------------------------------------
+
+" true color
+if exists("&termguicolors") && exists("&winblend")
+  syntax enable
+  set termguicolors
+  set winblend=0
+  set wildoptions=pum
+  set pumblend=5
+  set background=dark
+  " Use NeoSolarized
+  let g:neosolarized_termtrans=1
+  runtime ./colors/NeoSolarized.vim
+  colorscheme NeoSolarized
+endif
+
+"}}}
+
